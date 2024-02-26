@@ -71,6 +71,13 @@ $$\mathbb{E}[(타겟-Q(s_t,a_t))^2]$$
 - **def append_sample** : 리플레이 메모리에 저장 (s,a,r,s',done)
 - **def train_model** : 리플레이 메모리에서 무작위로 추출한 배치로 모델 학습
 - **리플레이 메모리에 저장된 형태**
+
+<br>
+
+```python
+def append_sample(self, state, action, reward, next_state, done):
+  self.memory.append((state, action, reward, next_state, done))
+```
   
 <br>
 
