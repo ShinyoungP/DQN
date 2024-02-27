@@ -72,6 +72,17 @@ $$\mathbb{E}[(타겟-Q(s_t,a_t))^2]$$
 **2. DQN 에이전트 정의 : class DQNAgent**
 - **def update_target_model** : 타겟 모델을 모델의 가중치로 업데이트하는 함수 
 - **def get_action** : 입실론 탐욕 정책으로 행동 선택
+
+<br>
+
+![](state_shape.jpg)
+
+<br>
+
+출력되는 q값의 shape이 저러니까 입실론 탐욕 정책을 사용할 때 q값이 가장 높은 action을 선택할 때 어떻게 해야할지 잘 생각해 보아야 한다.
+
+<br>
+
 - **def append_sample** : 리플레이 메모리에 저장 (s,a,r,s',done)
 - **def train_model** : 리플레이 메모리에서 무작위로 추출한 배치로 모델 학습
 - **리플레이 메모리에 저장된 형태**
