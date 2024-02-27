@@ -81,13 +81,6 @@ def append_sample(self, state, action, reward, next_state, done):
   
 <br>
 
-![](sample.jpg)
-
-<br>
-
-![](sample_element.jpg)
-
-
 ```python
 mini_batch = random.sample(self.memory, self.batch_size)
 
@@ -97,6 +90,13 @@ rewards = np.array([sample[2] for sample in mini_batch])
 next_states = np.array([sample[3][0] for sample in mini_batch])
 dones = np.array([sample[4] for sample in mini_batch])
 ```
+
+![](sample.jpg)
+
+<br>
+
+![](sample_element.jpg)
+
 
 **3. 학습 과정**
 - 각 에피소드마다 환경을 초기화하고, 에피소드가 끝날 때까지 다음을 반복한다.
