@@ -25,6 +25,10 @@ $$\mathbb{E}[(타겟-Q(s_t,a_t))^2]$$
 
 <br>
 
+![](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*AM0SyjdJ3eEzn_trLKS4fw.png)
+
+<br>
+
 ![](https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcw2t8w%2FbtrDU3Srd1K%2FDs7UlI3vY9qEhYqNtXSqi0%2Fimg.jpg)
 
 ### **전체 알고리즘**
