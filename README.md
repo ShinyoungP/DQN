@@ -190,13 +190,9 @@ class DQNAgent:
 
     # 입실론 탐욕 정책으로 행동 선택
     def get_action(self, state):
-        if np.random.rand() <= self.epsilon:
-            return random.randrange(self.action_size)
-        else:
-            q_value = self.model(state)
-            return np.argmax(q_value[0])
+        # Write Your Code 1
 
-    # 샘플 <s, a, r, s'>을 리플레이 메모리에 저장
+    # 샘플 <s, a, r, s', done>을 리플레이 메모리에 저장
     def append_sample(self, state, action, reward, next_state, done):
         self.memory.append((state, action, reward, next_state, done))
 
@@ -273,9 +269,11 @@ if __name__ == "__main__":
                 env.render()
 
             # 현재 상태로 행동을 선택
-            action = agent.get_action(state)
+            # Write Your Code 2
+
             # 선택한 행동으로 환경에서 한 타임스텝 진행
-            next_state, reward, done, info, _ = env.step(action)
+            # Write Your Code 3
+                
             next_state = np.reshape(next_state, [1, state_size])
             
             #set new done with less consideration with angle
@@ -331,17 +329,19 @@ if __name__ == "__main__":
                 
             score += reward
 
-            # 리플레이 메모리에 샘플 <s, a, r, s'> 저장
-            agent.append_sample(state, action, reward, next_state, done)
+            # 리플레이 메모리에 샘플 <s, a, r, s', done> 저장
+            # Write Your Code 4 
+
             # 매 타임스텝마다 학습
             if len(agent.memory) >= agent.train_start:
-                agent.train_model()
+                # Write Your Code 5
 
             state = next_state
 
             if done:
                 # 각 에피소드마다 타깃 모델을 모델의 가중치로 업데이트
-                agent.update_target_model()
+                # Write Your Code 6
+
                 # 에피소드마다 학습 결과 출력
                 print("count", count)
                 score_avg = 0.9 * score_avg + 0.1 * score if score_avg != 0 else score
