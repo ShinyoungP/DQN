@@ -221,12 +221,12 @@ class DQNAgent:
             # 현재 상태에 대한 모델의 큐함수
             predicts = self.model(states)
             # print(predicts.shape)
-            one_hot_action = tf.one_hot(actions, self.action_size)
-            predicts = tf.reduce_sum(one_hot_action * predicts, axis=1)
+            one_hot_action = tf.one_hot(actions, self.action_size) # 예를 들어, 3개의 가능한 행동이 있고, 행동 2가 선택되었다면, one-hot 벡터는 '[0, 1, 0]'이 된다.
+            predicts = tf.reduce_sum(one_hot_action * predicts, axis=1) # 선택된 행동에 해당하는 q값만을 남기고 나머지는 0으로 만든다. 이 결과를 행별로 합산하여, 각 샘플에 대한 선택된 행동의 q값만을 추출한다.
 
             # 다음 상태에 대한 타깃 모델의 큐함수
             target_predicts = self.target_model(next_states)
-            target_predicts = tf.stop_gradient(target_predicts)
+            target_predicts = tf.stop_gradient(target_predicts) # 이 q값에 대한 그래디언트 계산을 막아, 이 값이 상수처럼 취급되도록 한다.
 
             # 벨만 최적 방정식을 이용한 업데이트 타깃
             max_q = np.amax(target_predicts, axis=-1)
